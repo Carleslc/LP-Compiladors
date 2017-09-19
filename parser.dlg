@@ -1,0 +1,236 @@
+<<
+/* parser.dlg -- DLG Description of scanner
+ *
+ * Generated from: plumber.g
+ *
+ * Terence Parr, Will Cohen, and Hank Dietz: 1989-2001
+ * Purdue University Electrical Engineering
+ * With AHPCRC, University of Minnesota
+ * ANTLR Version 1.33MR33
+ */
+
+#define ANTLR_VERSION	13333
+#include "pcctscfg.h"
+#include "pccts_stdio.h"
+
+#include <string>
+#include <iostream>
+using namespace std;
+
+// struct to store information about tokens
+typedef struct {
+  string kind;
+  string text;
+} Attrib;
+
+// function to fill token information (predeclaration)
+void zzcr_attr(Attrib *attr, int type, char *text);
+
+// fields for AST nodes
+#define AST_FIELDS string kind; string text;
+#include "ast.h"
+
+// macro to create a new AST node (and function predeclaration)
+#define zzcr_ast(as,attr,ttype,textt) as=createASTnode(attr,ttype,textt)
+AST* createASTnode(Attrib* attr, int ttype, char *textt);
+#include "antlr.h"
+#include "ast.h"
+#include "tokens.h"
+#include "dlgdef.h"
+LOOKAHEAD
+
+void
+#ifdef __USE_PROTOS
+zzerraction(void)
+#else
+zzerraction()
+#endif
+{
+	(*zzerr)("invalid token");
+	zzadvance();
+	zzskip();
+}
+>>
+
+
+%%START
+
+@
+	<<
+		NLA = 1;
+	>>
+
+[0-9]+
+	<<
+		NLA = NUM;
+	>>
+
+\(
+	<<
+		NLA = LP;
+	>>
+
+\)
+	<<
+		NLA = RP;
+	>>
+
+\,
+	<<
+		NLA = COMMA;
+	>>
+
+\+
+	<<
+		NLA = ADD;
+	>>
+
+\-
+	<<
+		NLA = SUB;
+	>>
+
+\*
+	<<
+		NLA = MULT;
+	>>
+
+\<
+	<<
+		NLA = LT;
+	>>
+
+\>
+	<<
+		NLA = GT;
+	>>
+
+==
+	<<
+		NLA = EQ;
+	>>
+
+OR
+	<<
+		NLA = OR;
+	>>
+
+AND
+	<<
+		NLA = AND;
+	>>
+
+NOT
+	<<
+		NLA = NOT;
+	>>
+
+=
+	<<
+		NLA = SET;
+	>>
+
+WHILE
+	<<
+		NLA = WHILE;
+	>>
+
+ENDWHILE
+	<<
+		NLA = ENDWHILE;
+	>>
+
+TUBEVECTOR
+	<<
+		NLA = TUBEVECTOR;
+	>>
+
+OF
+	<<
+		NLA = OF;
+	>>
+
+CONNECTOR
+	<<
+		NLA = CONNECTOR;
+	>>
+
+TUBE
+	<<
+		NLA = TUBE;
+	>>
+
+LENGTH
+	<<
+		NLA = LENGTH;
+	>>
+
+DIAMETER
+	<<
+		NLA = DIAMETER;
+	>>
+
+SPLIT
+	<<
+		NLA = SPLIT;
+	>>
+
+MERGE
+	<<
+		NLA = MERGE;
+	>>
+
+PUSH
+	<<
+		NLA = PUSH;
+	>>
+
+POP
+	<<
+		NLA = POP;
+	>>
+
+FULL
+	<<
+		NLA = FULL;
+	>>
+
+EMPTY
+	<<
+		NLA = EMPTY;
+	>>
+
+WRITE
+	<<
+		NLA = WRITE;
+	>>
+
+CHECK
+	<<
+		NLA = CHECK;
+	>>
+
+\/\/~[\n]*
+	<<
+		NLA = COMMENT;
+    zzskip();   
+	>>
+
+[\0\ \t\n]
+	<<
+		NLA = SPACE;
+    zzskip();  
+	>>
+
+[a-zA-Z][0-9a-zA-Z]*
+	<<
+		NLA = ID;
+	>>
+
+(.)*
+	<<
+		NLA = OTHERS;
+    zzskip();  
+	>>
+
+%%
