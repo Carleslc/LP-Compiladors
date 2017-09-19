@@ -23,6 +23,6 @@ Més informació sobre compilació, execució i funcionament al document **`intr
 
 També es pot executar amb `Java` per qualsevol sistema operatiu com s'explica al document **`ANTLR3_with_Java.pdf`**
 
-## Exemple
+## Exemple
 
 Pots trobar exemples del llenguatge creat en aquesta pràctica als fitxers **`test.txt`** i **`inp.txt`**
