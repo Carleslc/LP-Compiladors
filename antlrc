@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$1" ] ; then
+    echo "Usage: ./antlr file"
+    exit 1
+fi
+echo $1.g " - " $(date)
+./pccts/bin/antlr -gt $1.g
+./pccts/bin/dlg -ci parser.dlg scan.c
+gcc -Wno-write-strings -o $1 $1.c scan.c err.c -I"./pccts/h"
