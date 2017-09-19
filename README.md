@@ -10,7 +10,16 @@ Necessitareu els compiladors `gcc` de C i `g++` de C++
 La carpeta _pccts_ inclou les llibreries de compilació i generació dels arxius necessaris per l'execució en _Linux_.
 
 S'inclou també el script **`antlrc`** per compilar el fitxer `.g` si està escrit en C i el script **`antlrcpp`** per C++
-Assegureu-vos de donar permissos d'execució en aquest fitxer: __`chmod +x antlrc`__
+
+Assegureu-vos de donar permissos d'execució als fitxers necessaris:
+```
+chmod +x ./pccts/bin/antlr
+chmod +x ./pccts/bin/dlg
+chmod +x antlrc
+chmod +x antlrcpp
+chmod +x plumber
+```
+
 
 El fitxer principal de la construcció del llenguatge és **`plumber.g`**
 
