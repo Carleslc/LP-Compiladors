@@ -29,10 +29,10 @@
 #include <stdio.h>
 #include <setjmp.h>
 
-#ifdef PCCTS_USE_STDARG
+#ifdef PCCTS_USE_STDARG //Where is this?
 #include <stdarg.h>
 #else
-#include <varargs.h>
+#include <stdarg.h>
 #endif
 
 #include "CASTBase.h"
